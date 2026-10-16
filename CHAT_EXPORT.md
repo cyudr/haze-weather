@@ -114,3 +114,35 @@
 
 ### Output File
 - Created `/CHAT_EXPORT.md` in the project root documenting all prompts, technical decisions, architectural patterns, and code implementations.
+
+---
+
+## Turn 6: Ultra-Realistic Google Maps with Exact GPS Coordinate Mapping
+
+### User Prompt
+> 1. create map similar to google map and map to the coordinates; git push when done
+
+### Engineering Implementation & Response
+- **Leaflet Engine Integration with Google Maps Edge Tiles**:
+  - Direct integration with Google Maps high-speed edge tile servers:
+    - **Google Roadmap**: `https://mt1.google.com/vt/lyrs=m&x={x}&y={y}&z={z}`
+    - **Google Photorealistic Satellite**: `https://mt1.google.com/vt/lyrs=s&x={x}&y={y}&z={z}`
+    - **Google Hybrid**: `https://mt1.google.com/vt/lyrs=y&x={x}&y={y}&z={z}`
+    - **Google Terrain**: `https://mt1.google.com/vt/lyrs=p&x={x}&y={y}&z={z}`
+    - **Google Dark/Night Mode**: `https://basemaps.cartocdn.com/dark_all/{z}/{x}/{y}@2x.png`
+- **Exact Singapore GPS Coordinates Mapping (WGS84 Datum)**:
+  - North: `1.41803° N, 103.82000° E` (Woodlands Station)
+  - South: `1.29587° N, 103.82000° E` (Telok Blangah Station)
+  - East: `1.35735° N, 103.94000° E` (Tampines Station)
+  - West: `1.35735° N, 103.70000° E` (Jurong West Station)
+  - Central: `1.35735° N, 103.82000° E` (Toa Payoh Central Station)
+  - Baseline: `1.35210° N, 103.81980° E` (National Islandwide Baseline)
+- **Live Interactive HUD & Coordinate Probe**:
+  - Live cursor coordinate tracking displaying real-time latitude & longitude down to 5 decimal places.
+  - Sector boundary polygons mapped to Singapore's official geographic bounds with color-coded PSI/PM2.5 fills.
+  - Radial haze dispersion circles anchored directly to station GPS coordinates.
+  - Custom Google teardrop pins (`L.divIcon`) with live numeric values and pulsing warning rings.
+  - Search bar supporting address lookup as well as direct coordinate queries (`1.35, 103.82`) with smooth `flyTo` animation.
+  - Street View Pegman integration opening 360° panoramic Google Street View at station coordinates.
+- **Git Push**:
+  - Committed and pushed all updates to `https://github.com/cyudr/haze-weather.git`.
