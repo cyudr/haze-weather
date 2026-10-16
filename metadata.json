@@ -1,0 +1,6 @@
+{
+  "name": "SG AirWatch - Singapore Live PSI & Air Quality",
+  "description": "Real-time Pollutant Standards Index (PSI) and PM2.5 tracking across Singapore with interactive regional map, threshold alerts, and push notifications.",
+  "requestFramePermissions": ["notifications", "geolocation"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
