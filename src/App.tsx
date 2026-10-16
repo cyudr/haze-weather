@@ -271,7 +271,7 @@ export default function App() {
       />
 
       {/* Main App Container */}
-      <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 py-6 space-y-6">
+      <main className="flex-1 max-w-7xl w-full mx-auto px-3.5 sm:px-6 py-4 sm:py-6 space-y-4 sm:space-y-6 pb-24 md:pb-8">
         {/* Scenario Simulator & Live Feed Controller Strip */}
         <ScenarioSimulator
           currentScenario={scenario}
@@ -477,7 +477,7 @@ export default function App() {
       />
 
       {/* Clean Footer */}
-      <footer className="border-t border-slate-200 dark:border-slate-900 bg-white dark:bg-slate-950 py-6 text-xs text-slate-500 transition-colors">
+      <footer className="border-t border-slate-200 dark:border-slate-900 bg-white dark:bg-slate-950 pt-6 pb-24 md:pb-6 text-xs text-slate-500 transition-colors">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-2">
             <span className="font-bold text-slate-800 dark:text-slate-300">SG AirWatch</span>

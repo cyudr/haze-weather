@@ -164,3 +164,27 @@
 2. Added `.npmrc` with `legacy-peer-deps=true` so CI/CD runners (Vercel, Netlify) automatically apply peer-dependency tolerance during `npm install`.
 3. Regenerated `package-lock.json` and verified `npm install` and `npm run build` execute with 0 errors.
 4. Committed and pushed the fix to `https://github.com/cyudr/haze-weather.git`.
+
+---
+
+## Turn 8: Mobile Phone & Dynamic Viewport Scaling Optimization
+
+### User Prompt
+> optimize this view for mobile phone, scale dynamically
+
+### Engineering Implementation & Response
+- **Dynamic Viewport Height & Scaling**:
+  - Replaced fixed map container height with responsive dynamic bounds: `h-[50vh] min-h-[350px] max-h-[600px] sm:h-[480px] lg:h-[580px]`.
+  - Implemented `ResizeObserver` on the Leaflet container to automatically call `map.invalidateSize()` upon viewport resize, orientation flip, or drawer opening.
+- **Mobile Ergonomic Thumb-Zone Navigation (Pattern 1)**:
+  - Streamlined Top Bar to a single compact row (`h-14`) with brand logo, touch-friendly theme toggle ($40\times 40\text{px}$), and alert button.
+  - Added fixed bottom navigation bar (`md:hidden fixed bottom-0 left-0 right-0 h-16`) with 4 distinct thumb targets: Overview, Google Map, 24H Trends, and Advisory.
+  - Honored the 15% mobile sticky surface cap and added `pb-24 md:pb-8` clearance on `<main>` and footer to prevent content clipping.
+- **Mobile-Adaptive Map Controls & Drawers**:
+  - Search bar dynamically sizes on mobile (`w-44 xs:w-56 sm:w-72`).
+  - Map type switchers (Map, Satellite, Hybrid, Night) support touch scroll.
+  - Station InfoWindow converts to a bottom slide-up drawer card with a tactile mobile drag handle.
+  - Layer toggles, zoom buttons, and Street View Pegman given touch hitboxes $\ge 40\text{px}$.
+  - Scenario simulation buttons arranged in a horizontal scrollable strip (`overflow-x-auto flex-nowrap`).
+- **Git Push**:
+  - Committed and pushed updates to `https://github.com/cyudr/haze-weather.git`.
