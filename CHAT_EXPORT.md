@@ -146,3 +146,21 @@
   - Street View Pegman integration opening 360° panoramic Google Street View at station coordinates.
 - **Git Push**:
   - Committed and pushed all updates to `https://github.com/cyudr/haze-weather.git`.
+
+---
+
+## Turn 7: Vercel npm install ERESOLVE Dependency Fix
+
+### User Prompt
+> fix 11:41:37.694 npm error vite@"^8.3.0" from the root project ... Conflicting peer dependency: esbuild@0.28.2 ... Error: [BUILD_UTILS_SPAWN_1] Command "npm install" exited with 1
+
+### Root Cause
+- `package.json` had `"esbuild": "^0.25.0"` explicitly pinned in `devDependencies`.
+- Vite 8.3 requires `esbuild@^0.27.0 || ^0.28.0`.
+- When Vercel's build runner executes `npm install`, npm 7+ strict peer dependency resolution detected the mismatch and halted with error `ERESOLVE`.
+
+### Fix Applied
+1. Removed the conflicting explicit `"esbuild": "^0.25.0"` from `devDependencies` in `package.json` (Vite bundles and manages its own required esbuild version).
+2. Added `.npmrc` with `legacy-peer-deps=true` so CI/CD runners (Vercel, Netlify) automatically apply peer-dependency tolerance during `npm install`.
+3. Regenerated `package-lock.json` and verified `npm install` and `npm run build` execute with 0 errors.
+4. Committed and pushed the fix to `https://github.com/cyudr/haze-weather.git`.
